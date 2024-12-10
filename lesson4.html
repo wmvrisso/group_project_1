@@ -8,6 +8,54 @@
     <title>Lesson 4</title>
 </head>
 <body>
+    <header>
+        <h1>Lesson 4: Shaded Fractions</h1>
+    </header>
+    <main>
+        <section id="multiple-choice">
+          <h2>Question 1: Multiple Choice</h2>
+          <p>Which fraction represents the shaded part of the diagram?</p>
+          <div id="diagram">🟦🟦🟦⬜⬜</div>
+          <div>
+            <button onclick="checkMultipleChoice(this)" data-answer="correct">3/5</button>
+            <button onclick="checkMultipleChoice(this)" data-answer="wrong">2/5</button>
+            <button onclick="checkMultipleChoice(this)" data-answer="wrong">4/5</button>
+          </div>
+          <p id="feedback1"></p>
+        </section>
+    
+        <section id="single-answer">
+          <h2>Question 2: Single Number Answer</h2>
+          <p>What fraction of this shape is shaded?</p>
+          <div id="shape">⬛⬛⬛⬜⬜</div>
+          <input type="number" id="numerator" placeholder="Numerator">
+          /
+          <input type="number" id="denominator" placeholder="Denominator">
+          <button onclick="checkSingleAnswer()">Submit</button>
+          <p id="feedback2"></p>
+        </section>
+    
+        <section id="click-to-shade">
+          <h2>Question 3: Click to Shade</h2>
+          <p>Click on the squares to shade in the fraction 2/4.</p>
+          <div id="grid">
+            <div class="square" onclick="toggleShade(this)"></div>
+            <div class="square" onclick="toggleShade(this)"></div>
+            <div class="square" onclick="toggleShade(this)"></div>
+            <div class="square" onclick="toggleShade(this)"></div>
+          </div>
+          <button onclick="checkShaded()">Submit</button>
+          <p id="feedback3"></p>
+        </section>
+      </main>
+    
+      <footer>
+        <p>Footer Group 3 Project 1</p>
+      </footer>
+    
+      <script src="lesson4.js"></script>  
+      
+
     <script src="./assets/js/script.js"></script>
     <script src="./assets/js/lesson4.js"></script>
 </body>
