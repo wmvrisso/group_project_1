@@ -1,99 +1,196 @@
-// Multiple Choice Question: Note variables for multiple choice questions will be marked with MC.
 let correctNumeratorMC = 0;
 let correctDenominatorMC = 0;
-let randomNumberA = 0;
-let randomNumberB = 0;
+let correctNumeratorSA = 0;
+let correctDenominatorSA = 0;
+let correctNumeratorCTS = 0;
+let correctDenominatorCTS = 0;
 
-function generateRandomFraction() {
-    randomNumberA = Math.floor(Math.random() * 8) + 1;
-    randomNumberB = Math.floor(Math.random() * 8) + 1;
+const correctFeedback = [
+  "Correct! You're better than Nutella and waffles!",
+  "Great job! You're the crème de la crème of math!",
+  "Correct! You’re as sharp as a fraction's line!",
+  "Well done! You just divided and conquered!",
+  "Fantastic! Fractions fear you now!",
+  "Correct! You're officially 5/5 awesome!",
+  "Great work! You're a fraction wizard!",
+  "Boom! You crushed it!",
+  "Correct! If fractions were cookies, you'd bake them perfectly!",
+  "Amazing! You're sweeter than a 3/3 slice of pie!",
+  "Correct! You’ve got more precision than a laser-cut pie!",
+  "Spot on! You’re the Michelangelo of fractions!",
+  "Bravo! You just leveled up your math game!",
+  "Correct! You’re a fraction action hero!",
+  "Nice! You're cookin'!",
+  "Correct! You’re dividing and conquering like a true champion!",
+  "Awesome! You’re the Beyoncé of breaking things into parts!",
+  "Right again! Fractions should be asking *you* for help!",
+  "Perfect! You’re locked in!",
+  "Correct! You're fractions’ favorite person ever!",
+  "Excellent! By the way, your hair looks great!",
+];
+
+const incorrectFeedback = [
+    "Not quite! Even pizza gets cut into equal parts!",
+    "Close, but fractions are picky about accuracy!",
+    "Oops! Try again—you've got this!",
+    "Almost there! Remember, fractions don't fudge the numbers.",
+    "Not this time, but you're still better than pineapple on pizza!",
+    "Missed it! Don’t worry, even math has its off days!",
+    "Keep going! Fractions need a little slice of practice.",
+    "Incorrect, but you're still gold to me!",
+    "Whoops! If that problem was a banana peel, you stepped on it!",
+    "Nope! But hey, at least you're not eating dirt.",
+    "Oops! Fractions can be a bit dramatic, huh?",
+    "Not quite. But don’t worry, the fraction police aren’t coming for you!",
+    "Nope! Fractions are tricky, but you'll get it!",
+    "Try again! Remember, a fraction never lies (unlike that one friend).",
+    "Incorrect, but hey, fractions can’t judge your awesomeness!",
+    "Whoops! Don’t let fractions throw shade—show them who’s boss!",
+    "Not quite! Just get it right before you cut my pizza!",
+    "Almost there! You’re just one fraction away from glory!",
+    "Missed it, but you’re still 5/4 amazing!",
+    "Nope, but hey, even Einstein needed practice!"
+  ];
+  
+
+// Generate Random Fraction and Picture
+function generateRandomFraction(htmlID, type) {
+  
+  const randomNumberA = Math.floor(Math.random() * 8) + 1;
+  const randomNumberB = Math.floor(Math.random() * 8) + 1;
+
+  let numerator;
+  let denominator;
+
+  // Ensure numerator is smaller than denominator
   if (randomNumberA > randomNumberB) {
-      correctNumeratorMC = correctNumeratorMC + randomNumberB;
-      correctDenominatorMC = correctDenominatorMC + randomNumberA;
+    numerator = randomNumberB;
+    denominator = randomNumberA;
   } else {
-      correctNumeratorMC = correctNumeratorMC + randomNumberA;
-      correctDenominatorMC = correctDenominatorMC + randomNumberB;
+    numerator = randomNumberA;
+    denominator = randomNumberB;
+  }
+  // Update the correct variables based on type
+  if (type === "MC") {
+    correctNumeratorMC = numerator;
+    correctDenominatorMC = denominator;
+  } else if (type === "SA") {
+    correctNumeratorSA = numerator;
+    correctDenominatorSA = denominator;
+  } else if (type === "CTS") {
+    correctNumeratorCTS = numerator;
+    correctDenominatorCTS = denominator;
+  }
+
+  const fractionDiaMC = document.getElementById(htmlID);
+  fractionDiaMC.innerHTML = ""; 
+
+  // Create numerator blocks
+  for (let i = 0; i < numerator; i++) {
+    const shadedBlock = document.createElement('span');
+    shadedBlock.textContent = '🟦';
+    fractionDiaMC.appendChild(shadedBlock);
+  }
+
+  // Create unshaded blocks (denominator - numerator)
+  for (let i = 0; i < denominator - numerator; i++) {
+    const unshadedBlock = document.createElement('span');
+    unshadedBlock.textContent = '⬜';
+    fractionDiaMC.appendChild(unshadedBlock);
+  }
+
+  // Assign random correct answer
+  if (type === 'MC') {
+    assignRandomAnswers();
+  }
+  
+}
+
+// Assign Random Correct Answer to Multiple Choice Buttons
+function assignRandomAnswers() {
+  const buttons = document.querySelectorAll("#multiple-choice button:not(.excluded)");
+  const correctAnswer = `${correctNumeratorMC}/${correctDenominatorMC}`;
+
+  // Randomly pick one button for the correct answer
+  const correctIndex = Math.floor(Math.random() * buttons.length);
+  buttons.forEach((button, index) => {
+    if (index === correctIndex) {
+      button.textContent = correctAnswer;
+      button.setAttribute("data-answer", "correct");
+    } else {
+      // Generate an incorrect answer
+      const randomNumberA = Math.floor(Math.random() * 8) + 1;
+      const randomNumberB = Math.floor(Math.random() * 8) + 1;
+      if (randomNumberA > randomNumberB) {
+        randomNumerator = randomNumberB;
+        randomDenominator = randomNumberA;
+      } else {
+        randomNumerator = randomNumberA;
+        randomDenominator = randomNumberB;
+      }
+      button.textContent = `${randomNumerator}/${randomDenominator}`;
+      button.setAttribute("data-answer", "wrong");
+    }
+  });
+}
+
+// Check Multiple Choice Answer
+function checkMultipleChoice(button) {
+  const feedback = document.getElementById("feedback1");
+  if (button.getAttribute("data-answer") === "correct") {
+    feedback.textContent = correctFeedback[Math.floor(Math.random() * correctFeedback.length)];
+    feedback.style.color = "green";
+    const answerButtons = document.querySelectorAll("#multiple-choice button:not(.excluded)");
+    answerButtons.style.display = 'none'
+  } else {
+    feedback.textContent = incorrectFeedback[Math.floor(Math.random() * incorrectFeedback.length)];
+    feedback.style.color = "blue";
   }
 }
 
-generateRandomFraction();
-console.log(randomNumberA)
-console.log(correctNumeratorMC, correctDenominatorMC);
+// Initialize the first questions when the page loads
+window.onload = generateRandomFraction('diagramMC', 'MC');
+window.onload = generateRandomFraction('diagramSA','SA');
+window.onload = generateRandomFraction('diagramCTS', 'CTS');
 
-
-// function checkMultipleChoice(button) {
-//     const feedback = document.getElementById("feedback1");
-//     if (button.getAttribute("data-answer") === "correct") {
-//       feedback.textContent = "Correct! Well done.";
-//       feedback.style.color = "green";
-//     } else {
-//       feedback.textContent = "Try again!";
-//       feedback.style.color = "red";
-//     }
-//   }
+// Single answer section
+function checkSingleAnswer() {
+    const numerator = parseInt(document.getElementById("numerator-sa").value);
+    const denominator = parseInt(document.getElementById("denominator-sa").value);
+    const feedback = document.getElementById("feedback2");
+    console.log(correctNumeratorSA, correctDenominatorSA);
   
-//   // Single Number Answer
-//   function checkSingleAnswer() {
-//     const numerator = document.getElementById("numerator").value;
-//     const denominator = document.getElementById("denominator").value;
-//     const feedback = document.getElementById("feedback2");
+    if (numerator === correctNumeratorSA && denominator === correctDenominatorSA) {
+      feedback.textContent = correctFeedback[Math.floor(Math.random() * correctFeedback.length)];
+      feedback.style.color = "green";
+      generateRandomFraction('diagramSA', 'SA');
+      document.getElementById("numerator-sa").value = '';
+      document.getElementById("denominator-sa").value = '';
+    } else {
+      feedback.textContent = incorrectFeedback[Math.floor(Math.random() * incorrectFeedback.length)];
+      feedback.style.color = "blue";
+    }
+  }
   
-//     if (numerator === "3" && denominator === "5") {
-//       feedback.textContent = "Correct! The fraction is 3/5.";
-//       feedback.style.color = "green";
-//     } else {
-//       feedback.textContent = "Incorrect. Check your work.";
-//       feedback.style.color = "red";
-//     }
-//   }
+  // Click to Shade
+  function toggleShade(square) {
+    square.classList.toggle("shaded");
+  }
   
-//   // Click to Shade
-//   function toggleShade(square) {
-//     square.classList.toggle("shaded");
-//   }
+  function checkShaded() {
+    const squares = document.querySelectorAll("#grid .square");
+    const feedback = document.getElementById("feedback3");
+    let shadedCount = 0;
   
-//   function checkShaded() {
-//     const squares = document.querySelectorAll("#grid .square");
-//     const feedback = document.getElementById("feedback3");
-//     let shadedCount = 0;
+    squares.forEach(square => {
+      if (square.classList.contains("shaded")) shadedCount++;
+    });
   
-//     squares.forEach(square => {
-//       if (square.classList.contains("shaded")) shadedCount++;
-//     });
-  
-//     if (shadedCount === 2) {
-//       feedback.textContent = "Correct! You shaded 2/4.";
-//       feedback.style.color = "green";
-//     } else {
-//       feedback.textContent = "Try again! Make sure you shade 2 squares.";
-//       feedback.style.color = "red";
-//     }
-//   }
-
-//   // Random Fraction Generator
-
-
-
-
-//   // Update the question display
-//   const shape = document.getElementById("shape");
-//   shape.textContent = `What fraction of this shape is shaded? (${correctNumerator}/${correctDenominator} visually represented)`;
-// }
-
-// function checkSingleAnswer() {
-//   const numerator = document.getElementById("numerator").value;
-//   const denominator = document.getElementById("denominator").value;
-//   const feedback = document.getElementById("feedback2");
-
-//   if (parseInt(numerator) === correctNumerator && parseInt(denominator) === correctDenominator) {
-//     feedback.textContent = "Correct! Great job!";
-//     feedback.style.color = "green";
-//     generateRandomFraction(); // Generate a new question after a correct answer
-//   } else {
-//     feedback.textContent = "You're getting there! Try again!";
-//     feedback.style.color = "blue";
-//   }
-// }
-
-// // Initialize the first question when the page loads
-// window.onload = generateRandomFraction;
+    if (shadedCount === 2) {
+      feedback.textContent = correctFeedback[Math.floor(Math.random() * correctFeedback.length)];
+      feedback.style.color = "green";
+    } else {
+      feedback.textContent = incorrectFeedback[Math.floor(Math.random() * incorrectFeedback.length)];
+      feedback.style.color = "blue";
+    }
+  }
