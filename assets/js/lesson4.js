@@ -71,19 +71,19 @@ function generateRandomFraction(htmlID, type) {
     denominator = randomNumberB;
   }
   // Update the correct variables based on type
-  if (type === "MC") {
+  if (type === 'MC') {
     correctNumeratorMC = numerator;
     correctDenominatorMC = denominator;
-  } else if (type === "SA") {
+  } else if (type === 'SA') {
     correctNumeratorSA = numerator;
     correctDenominatorSA = denominator;
-  } else if (type === "CTS") {
+  } else if (type === 'CTS') {
     correctNumeratorCTS = numerator;
     correctDenominatorCTS = denominator;
   }
 
   const fractionDiaMC = document.getElementById(htmlID);
-  fractionDiaMC.innerHTML = ""; 
+  fractionDiaMC.innerHTML = ''; 
 
   // Create numerator blocks
   for (let i = 0; i < numerator; i++) {
@@ -102,13 +102,19 @@ function generateRandomFraction(htmlID, type) {
   // Assign random correct answer
   if (type === 'MC') {
     assignRandomAnswers();
+
+    //Makes answers visible after a new question
+    const answerButtons = document.querySelectorAll('#multiple-choice button');
+    answerButtons.forEach((btn) => {
+        btn.style.display = 'inline-block';
+    })
   }
   
 }
 
 // Assign Random Correct Answer to Multiple Choice Buttons
 function assignRandomAnswers() {
-  const buttons = document.querySelectorAll("#multiple-choice button:not(.excluded)");
+  const buttons = document.querySelectorAll('#multiple-choice button');
   const correctAnswer = `${correctNumeratorMC}/${correctDenominatorMC}`;
 
   // Randomly pick one button for the correct answer
@@ -116,9 +122,9 @@ function assignRandomAnswers() {
   buttons.forEach((button, index) => {
     if (index === correctIndex) {
       button.textContent = correctAnswer;
-      button.setAttribute("data-answer", "correct");
+      button.setAttribute('data-answer', 'correct');
     } else {
-      // Generate an incorrect answer
+      // Generate an incorrect answers
       const randomNumberA = Math.floor(Math.random() * 8) + 1;
       const randomNumberB = Math.floor(Math.random() * 8) + 1;
       if (randomNumberA > randomNumberB) {
@@ -129,68 +135,118 @@ function assignRandomAnswers() {
         randomDenominator = randomNumberB;
       }
       button.textContent = `${randomNumerator}/${randomDenominator}`;
-      button.setAttribute("data-answer", "wrong");
+      button.setAttribute('data-answer', 'wrong');
     }
   });
 }
 
 // Check Multiple Choice Answer
 function checkMultipleChoice(button) {
-  const feedback = document.getElementById("feedback1");
-  if (button.getAttribute("data-answer") === "correct") {
+  const feedback = document.getElementById('feedback1');
+  const answerButtons = document.querySelectorAll('#multiple-choice button')
+
+  if (button.getAttribute('data-answer') === 'correct') {
     feedback.textContent = correctFeedback[Math.floor(Math.random() * correctFeedback.length)];
-    feedback.style.color = "green";
-    const answerButtons = document.querySelectorAll("#multiple-choice button:not(.excluded)");
-    answerButtons.style.display = 'none'
+    feedback.style.color = 'green';
+
+    answerButtons.forEach((btn)=> {
+        btn.style.display = 'none';
+    });
+
   } else {
     feedback.textContent = incorrectFeedback[Math.floor(Math.random() * incorrectFeedback.length)];
-    feedback.style.color = "blue";
+    feedback.style.color = 'blue';
   }
 }
 
 // Initialize the first questions when the page loads
-window.onload = generateRandomFraction('diagramMC', 'MC');
-window.onload = generateRandomFraction('diagramSA','SA');
-window.onload = generateRandomFraction('diagramCTS', 'CTS');
+window.onload = function() {
+    generateRandomFraction('diagramMC', 'MC');
+    generateRandomFraction('diagramSA','SA');
+    generateClickToShadeDiagram('diagram', 'CTS');
+}
+
 
 // Single answer section
 function checkSingleAnswer() {
-    const numerator = parseInt(document.getElementById("numerator-sa").value);
-    const denominator = parseInt(document.getElementById("denominator-sa").value);
-    const feedback = document.getElementById("feedback2");
+    const numerator = parseInt(document.getElementById('numerator-sa').value);
+    const denominator = parseInt(document.getElementById('denominator-sa').value);
+    const feedback = document.getElementById('feedback2');
     console.log(correctNumeratorSA, correctDenominatorSA);
   
     if (numerator === correctNumeratorSA && denominator === correctDenominatorSA) {
       feedback.textContent = correctFeedback[Math.floor(Math.random() * correctFeedback.length)];
-      feedback.style.color = "green";
+      feedback.style.color = 'green';
       generateRandomFraction('diagramSA', 'SA');
-      document.getElementById("numerator-sa").value = '';
-      document.getElementById("denominator-sa").value = '';
+      document.getElementById('numerator-sa').value = '';
+      document.getElementById('denominator-sa').value = '';
     } else {
       feedback.textContent = incorrectFeedback[Math.floor(Math.random() * incorrectFeedback.length)];
-      feedback.style.color = "blue";
+      feedback.style.color = 'blue';
     }
   }
   
-  // Click to Shade
-  function toggleShade(square) {
-    square.classList.toggle("shaded");
+// Click to Shade
+function generateClickToShadeDiagram(htmlID, type) {
+    const diagramContainer = document.getElementById(htmlID);
+    diagramContainer.innerHTML = '';
+  
+    const randomNumberA = Math.floor(Math.random() * 8) + 1;
+    const randomNumberB = Math.floor(Math.random() * 8) + 1;
+  
+    let numerator;
+    let denominator;
+  
+    // Ensure numerator is smaller than or equal to denominator
+    if (randomNumberA > randomNumberB) {
+      numerator = randomNumberB;
+      denominator = randomNumberA;
+    } else {
+      numerator = randomNumberA;
+      denominator = randomNumberB;
+    }
+  
+    // Update the correct variables for CTS
+    correctNumeratorCTS = numerator;
+    correctDenominatorCTS = denominator;
+  
+    // Create the diagram
+    for (let i = 0; i < denominator; i++) {
+      const square = document.createElement('div');
+      square.classList.add('square');
+      square.dataset.index = i; // Optional, for debugging or advanced use
+      square.onclick = () => toggleShade(square);
+      diagramContainer.appendChild(square);
+    }
+  
+    // Display the target fraction
+    const targetFraction = document.getElementById('target-fraction');
+    targetFraction.textContent = `Shade ${numerator}/${denominator}`;
   }
   
-  function checkShaded() {
-    const squares = document.querySelectorAll("#grid .square");
-    const feedback = document.getElementById("feedback3");
-    let shadedCount = 0;
+  // Function to toggle shading of a square
+  function toggleShade(square) {
+    square.classList.toggle('shaded');
+  }
   
-    squares.forEach(square => {
-      if (square.classList.contains("shaded")) shadedCount++;
+  // Function to check the shaded squares against the correct answer
+  function checkShadedDiagram(htmlID) {
+    const squares = document.querySelectorAll(`#${htmlID} .square`);
+    const feedback = document.getElementById('feedback3');
+  
+    // Count shaded squares
+    let shadedCount = 0;
+    squares.forEach((square) => {
+      if (square.classList.contains('shaded')) shadedCount++;
     });
   
-    if (shadedCount === 2) {
+    // Compare shaded count with the correct numerator
+    if (shadedCount === correctNumeratorCTS) {
       feedback.textContent = correctFeedback[Math.floor(Math.random() * correctFeedback.length)];
-      feedback.style.color = "green";
+      feedback.style.color = 'green';
+      generateClickToShadeDiagram('diagram', 'CTS'); // Generate a new problem
     } else {
       feedback.textContent = incorrectFeedback[Math.floor(Math.random() * incorrectFeedback.length)];
-      feedback.style.color = "blue";
+      feedback.style.color = 'blue';
     }
   }

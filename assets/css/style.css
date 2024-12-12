@@ -52,4 +52,25 @@
   #subtract {
     background-color: #f64900
   }
+
+  .diagram-container {
+    display: grid;
+    diagram-template-columns: repeat(auto-fill, 50px); /* Adjust number of columns */
+    gap: 10px;
+    margin: 20px 0;
+  }
+  
+  .square {
+    width: 25px;
+    height: 25px;
+    background-color: white;
+    border: 1px solid black;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .square.shaded {
+    background-color: #007bff;
+  }
+  
   

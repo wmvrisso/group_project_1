@@ -12,21 +12,23 @@
         <h1>Lesson 4: Shaded Fractions</h1>
     </header>
     <main>
-        <section id="multiple-choice">
-            <h2>Question 1: Multiple Choice</h2>
+        <section>
+            <h2>Multiple Choice</h2>
             <p>Which fraction represents the shaded part of the diagram?</p>
             <div id="diagramMC"></div> <!-- Visual fraction diagram -->
+            <div id="multiple-choice">
+              <button onclick="checkMultipleChoice(this)"></button>
+              <button onclick="checkMultipleChoice(this)"></button>
+              <button onclick="checkMultipleChoice(this)"></button>
+            </div>
             <div>
-              <button onclick="checkMultipleChoice(this)"></button>
-              <button onclick="checkMultipleChoice(this)"></button>
-              <button onclick="checkMultipleChoice(this)"></button>
-              <button class = "excluded" onclick="generateRandomFraction('diagramMC', 'MC')">Try Another</button>
+                <button onclick="generateRandomFraction('diagramMC', 'MC')">Try Another</button>
             </div>
             <p id="feedback1"></p>
         </section>
           
         <section id="single-answer">
-          <h2>Question 2: Single Number Answer</h2>
+          <h2>Single Number Answer</h2>
           <p>What fraction of this shape is shaded?</p>
           <div id="diagramSA"></div><!-- Visual fraction diagram -->
           <input type="number" id="numerator-sa" placeholder="Numerator">
@@ -36,12 +38,11 @@
         </section>
     
         <section id="click-to-shade">
-          <h2>Question 3: Click to Shade</h2>
-          <p>Click on the squares to shade in the fraction.</p>
-          <div id="diagramCTS">
-          </div>
-          <button>Submit</button>
-          <p id="feedback3"></p>
+            <h2>Question 3: Click to Shade</h2>
+            <p id="target-fraction"></p>
+            <div id="diagram" class="diagram-container"></div>
+            <button onclick="checkShadedDiagram('diagram')">Submit</button>
+            <p id="feedback3"></p>
         </section>
       </main>
     
