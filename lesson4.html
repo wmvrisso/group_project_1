@@ -9,7 +9,13 @@
 </head>
 <body>
     <header>
-        <h1>Lesson 4: Shaded Fractions</h1>
+      <h1>Lesson 4: Shaded Fractions</h1>
+      <!-- Needed for all pages to show progress -->
+      <div id="user-info">
+         <h2 id="user-greeting"></h2>
+        <div id="progress"></div>
+        <button onclick="resetProgress()">Reset Progress</button>
+      </div>
     </header>
     <main>
         <section>
@@ -24,7 +30,7 @@
             <div>
                 <button onclick="generateRandomFraction('diagramMC', 'MC')">Try Another</button>
             </div>
-            <p id="feedback1"></p>
+            <p id="feedbackMC"></p>
         </section>
           
         <section id="single-answer">
@@ -34,15 +40,15 @@
           <input type="number" id="numerator-sa" placeholder="Numerator">
           <input type="number" id="denominator-sa" placeholder="Denominator">
           <button onclick="checkSingleAnswer(this)">Submit</button>
-          <p id="feedback2"></p>
+          <p id="feedbackSA"></p>
         </section>
     
         <section id="click-to-shade">
-            <h2>Question 3: Click to Shade</h2>
+            <h2>Click to Shade</h2>
             <p id="target-fraction"></p>
             <div id="diagram" class="diagram-container"></div>
             <button onclick="checkShadedDiagram('diagram')">Submit</button>
-            <p id="feedback3"></p>
+            <p id="feedbackCTS"></p>
         </section>
       </main>
     
@@ -52,5 +58,6 @@
       
     <script src="./assets/js/script.js"></script>
     <script src="./assets/js/lesson4.js"></script>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
+  </body>
 </html>

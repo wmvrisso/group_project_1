@@ -5,6 +5,10 @@ let correctDenominatorSA = 0;
 let correctNumeratorCTS = 0;
 let correctDenominatorCTS = 0;
 
+let streakMC = 0;
+let streakSA = 0;
+let streakCTS = 0;
+
 const correctFeedback = [
   "Correct! You're better than Nutella and waffles!",
   "Great job! You're the crème de la crème of math!",
@@ -22,7 +26,7 @@ const correctFeedback = [
   "Correct! You’re a fraction action hero!",
   "Nice! You're cookin'!",
   "Correct! You’re dividing and conquering like a true champion!",
-  "Awesome! You’re the Beyoncé of breaking things into parts!",
+  "Awesome! You’re the Beyoncé of breaking down fractions!",
   "Right again! Fractions should be asking *you* for help!",
   "Perfect! You’re locked in!",
   "Correct! You're fractions’ favorite person ever!",
@@ -142,12 +146,22 @@ function assignRandomAnswers() {
 
 // Check Multiple Choice Answer
 function checkMultipleChoice(button) {
-  const feedback = document.getElementById('feedback1');
+  const feedback = document.getElementById('feedbackMC');
   const answerButtons = document.querySelectorAll('#multiple-choice button')
 
   if (button.getAttribute('data-answer') === 'correct') {
+    const userName = localStorage.getItem('userName');
     feedback.textContent = correctFeedback[Math.floor(Math.random() * correctFeedback.length)];
     feedback.style.color = 'green';
+
+    streakMC++
+    console.log(streakMC);
+    if (streakMC >= 4) {
+      updateProgress('completeMC');
+      playConfetti();
+      feedback.textContent = `🥳 Nice work, ${userName}! You've passed off these questions.`
+      streakMC = 0;
+    }
 
     answerButtons.forEach((btn)=> {
         btn.style.display = 'none';
@@ -156,6 +170,8 @@ function checkMultipleChoice(button) {
   } else {
     feedback.textContent = incorrectFeedback[Math.floor(Math.random() * incorrectFeedback.length)];
     feedback.style.color = 'blue';
+
+    streakMC = 0
   }
 }
 
@@ -171,18 +187,28 @@ window.onload = function() {
 function checkSingleAnswer() {
     const numerator = parseInt(document.getElementById('numerator-sa').value);
     const denominator = parseInt(document.getElementById('denominator-sa').value);
-    const feedback = document.getElementById('feedback2');
+    const feedback = document.getElementById('feedbackSA');
     console.log(correctNumeratorSA, correctDenominatorSA);
   
     if (numerator === correctNumeratorSA && denominator === correctDenominatorSA) {
       feedback.textContent = correctFeedback[Math.floor(Math.random() * correctFeedback.length)];
       feedback.style.color = 'green';
-      generateRandomFraction('diagramSA', 'SA');
-      document.getElementById('numerator-sa').value = '';
-      document.getElementById('denominator-sa').value = '';
+      streakSA++
+
+      if (streakSA >= 4) {
+        updateProgress('completeSA');
+        feedback.textContent = `🥳 There is no stopping you, ${userName}! You've passed off these questions.`
+      } else {
+        generateRandomFraction('diagramSA', 'SA');
+        document.getElementById('numerator-sa').value = '';
+        document.getElementById('denominator-sa').value = '';
+      }
+
     } else {
       feedback.textContent = incorrectFeedback[Math.floor(Math.random() * incorrectFeedback.length)];
       feedback.style.color = 'blue';
+
+      streakSA = 0;
     }
   }
   
@@ -206,7 +232,6 @@ function generateClickToShadeDiagram(htmlID, type) {
       denominator = randomNumberB;
     }
   
-    // Update the correct variables for CTS
     correctNumeratorCTS = numerator;
     correctDenominatorCTS = denominator;
   
@@ -214,39 +239,98 @@ function generateClickToShadeDiagram(htmlID, type) {
     for (let i = 0; i < denominator; i++) {
       const square = document.createElement('div');
       square.classList.add('square');
-      square.dataset.index = i; // Optional, for debugging or advanced use
       square.onclick = () => toggleShade(square);
       diagramContainer.appendChild(square);
     }
   
-    // Display the target fraction
     const targetFraction = document.getElementById('target-fraction');
     targetFraction.textContent = `Shade ${numerator}/${denominator}`;
   }
   
-  // Function to toggle shading of a square
   function toggleShade(square) {
     square.classList.toggle('shaded');
   }
   
-  // Function to check the shaded squares against the correct answer
   function checkShadedDiagram(htmlID) {
     const squares = document.querySelectorAll(`#${htmlID} .square`);
-    const feedback = document.getElementById('feedback3');
+    const feedback = document.getElementById('feedbackCTS');
   
-    // Count shaded squares
     let shadedCount = 0;
     squares.forEach((square) => {
       if (square.classList.contains('shaded')) shadedCount++;
     });
   
-    // Compare shaded count with the correct numerator
     if (shadedCount === correctNumeratorCTS) {
       feedback.textContent = correctFeedback[Math.floor(Math.random() * correctFeedback.length)];
       feedback.style.color = 'green';
-      generateClickToShadeDiagram('diagram', 'CTS'); // Generate a new problem
+      streakCTS++
+      if (streakCTS >= 4) {
+        updateProgress('completeCTS');
+
+        feedback.textContent = `🥳 You're on fire, ${userName}! You've passed off these questions.`
+      } else {
+        generateClickToShadeDiagram('diagram', 'CTS');
+      }
+
     } else {
       feedback.textContent = incorrectFeedback[Math.floor(Math.random() * incorrectFeedback.length)];
       feedback.style.color = 'blue';
+
+      streakCTS = 0;
     }
   }
+
+  // Function to play confetti effect
+function playConfetti() {
+  const duration = 2 * 1000; // 2 seconds
+  const end = Date.now() + duration;
+
+  const colors = ['#bb0000', '#ffffff', '#00bb00'];
+
+  (function frame() {
+    confetti({
+      particleCount: 5,
+      angle: 60,
+      spread: 55,
+      origin: { x: 0 },
+      colors: colors,
+    });
+    confetti({
+      particleCount: 5,
+      angle: 120,
+      spread: 55,
+      origin: { x: 1 },
+      colors: colors,
+    });
+
+    if (Date.now() < end) {
+      requestAnimationFrame(frame);
+    }
+  })();
+}
+//Trigger confetti after all lessons are completed
+function checkProgressForConfetti() {
+  const progress = JSON.parse(localStorage.getItem("progress")) || {};
+  const lessons = ["completeMC", "completeSA", "completeCTS"]; // Replace with lesson keys
+
+  // Check if all lessons are completed
+  const allCompleted = lessons.every((lesson) => progress[lesson] === true);
+
+  if (allCompleted) {
+    // playConfetti();
+    alert("Congratulations! You've completed all lessons! 🎉");
+  }
+}
+
+// Example: Call this function in appropriate places
+function updateProgress(lesson) {
+  const progress = JSON.parse(localStorage.getItem("progress")) || {};
+  progress[lesson] = true; // Mark lesson as completed
+  localStorage.setItem("progress", JSON.stringify(progress));
+
+  // Check for confetti condition
+  checkProgressForConfetti();
+
+  // Reload progress display
+  loadProgress();
+}
