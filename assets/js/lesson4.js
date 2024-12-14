@@ -113,13 +113,15 @@ function generateRandomFraction(htmlID, type) {
         btn.style.display = 'inline-block';
     })
   }
-  
 }
 
 // Assign Random Correct Answer to Multiple Choice Buttons
 function assignRandomAnswers() {
   const buttons = document.querySelectorAll('#multiple-choice button');
-  const correctAnswer = `${correctNumeratorMC}/${correctDenominatorMC}`;
+  const correctAnswer = `${correctNumeratorMC}/${correctDenominatorMC}`;//Need to figure out how to make incorrect not match the correct answer
+  const allOptionsMC = new Set();
+
+  allOptionsMC.add(correctAnswer);
 
   // Randomly pick one button for the correct answer
   const correctIndex = Math.floor(Math.random() * buttons.length);
