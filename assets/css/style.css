@@ -127,6 +127,12 @@ button#save-username:hover {
 }
 }
 
+.home-image img {
+    box-sizing: border-box;
+    height: 300px;
+    width: 300px;
+}
+
 /* Progress bar container */
 #progress-container {
     position: fixed;
