@@ -1,3 +1,9 @@
+window.onload = function () {
+  generateRandomFraction ('diagramMC', 'MC');
+  generateRandomFraction('diagramSA','SA');
+  generateClickToShadeDiagram('diagram', 'CTS');
+}
+
 let correctNumeratorMC = 0;
 let correctDenominatorMC = 0;
 let correctNumeratorSA = 0;
@@ -174,7 +180,7 @@ function checkMultipleChoice(button) {
   const answerButtons = document.querySelectorAll('#multiple-choice button')
 
   if (button.getAttribute('data-answer') === 'correct') {
-    const userName = localStorage.getItem('userName');
+    const username = localStorage.getItem('username');
     feedback.textContent = correctFeedback[Math.floor(Math.random() * correctFeedback.length)];
     feedback.style.color = 'green';
 
@@ -183,7 +189,7 @@ function checkMultipleChoice(button) {
     if (streakMC >= 4) {
       updateProgress('completeMC');
       playConfetti();
-      feedback.textContent = `🥳 Nice work, ${userName}! You've passed off these questions. You're next set.`
+      feedback.textContent = `🥳 Nice work, ${username}! You've passed off these questions. You're next set.`
       streakMC = 0;
     }
 
@@ -199,17 +205,9 @@ function checkMultipleChoice(button) {
   }
 }
 
-// Initialize the first questions when the page loads
-window.onload = function() {
-    generateRandomFraction('diagramMC', 'MC');
-    generateRandomFraction('diagramSA','SA');
-    generateClickToShadeDiagram('diagram', 'CTS');
-}
-
-
 // Single answer section
 function checkSingleAnswer() {
-  const userName = localStorage.getItem('userName');  
+  const username = localStorage.getItem('username');  
   const numerator = parseInt(document.getElementById('numerator-sa').value);
   const denominator = parseInt(document.getElementById('denominator-sa').value);
   const feedback = document.getElementById('feedbackSA');
@@ -222,7 +220,7 @@ function checkSingleAnswer() {
 
       if (streakSA >= 4) {
         updateProgress('completeSA');
-        feedback.textContent = `🥳 There is no stopping you, ${userName}! You've passed off these questions.`
+        feedback.textContent = `🥳 There is no stopping you, ${username}! You've passed off these questions.`
         playConfetti();
       } else {
         generateRandomFraction('diagramSA', 'SA');
@@ -289,13 +287,13 @@ function generateClickToShadeDiagram(htmlID, type) {
     });
   
     if (shadedCount === correctNumeratorCTS) {
-      const userName = localStorage.getItem('userName');
+      const username = localStorage.getItem('username');
       feedback.textContent = correctFeedback[Math.floor(Math.random() * correctFeedback.length)];
       feedback.style.color = 'green';
       streakCTS++
       if (streakCTS >= 4) {
         updateProgress('completeCTS');
-        feedback.textContent = `🥳 You're on fire, ${userName}! You've passed off these questions.`
+        feedback.textContent = `🥳 You're on fire, ${username}! You've passed off these questions.`
         playConfetti();
       } else {
         generateClickToShadeDiagram('diagram', 'CTS');

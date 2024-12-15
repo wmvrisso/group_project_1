@@ -25,6 +25,11 @@
       <a href="./lesson2.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Lesson 2</a>
       <a href="./lesson3.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Lesson 3</a>
       <a href="./lesson4.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Lesson 4</a>
+      <div id="progress-container">
+        <div id="progress-bar">
+          <div id="progress-fill"></div>
+        </div>
+      </div>      
     </div>
   
     <!-- Navbar on small screens -->
@@ -151,15 +156,24 @@
         </div>
       </section>
     </main>
+
+    <div id="username-modal" class="modal">
+      <div class="modal-content">
+        <h2>Hi there! What should we call you?</h2>
+        <input type="text" id="username-input" placeholder="Enter your username" />
+        <button id="save-username">Submit</button>
+        <p id="username-error" class="error-message"></p>
+      </div>
+    </div>    
     
-      <footer class="w3-container w3-padding-64 w3-center w3-opacity">
-        <p> Group 4 Project 1</p>
-        <button onclick="resetProgress()">Reset Progress</button>
-        <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
-      </footer> 
+    <footer class="w3-container w3-padding-64 w3-center w3-opacity">
+      <p> Group 4 Project 1</p>
+      <button onclick="resetProgress()">Reset Progress</button>
+      <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+    </footer>
       
     <script src="./assets/js/script.js"></script>
     <script src="./assets/js/lesson4.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
-  </body>
+</body>
 </html>
