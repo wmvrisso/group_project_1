@@ -6,10 +6,10 @@
 }
   
 .square {
-  width: 25px;
-  height: 25px;
+  width: 40px;
+  height: 40px;
   background-color: white;
-  border: 1px solid black;
+  border: 3px solid black;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
 }
@@ -18,45 +18,9 @@
   background-color: #007bff;
 }
 
-/* This is how we can make a stacked fraction (add to style.css when appropriate)*/
-.flex-container {
-  display: flex;
-  align-items: center; 
-  justify-content: space-between;
-  gap: 20px;
-}
-
-/* Styling the fraction container */
-.fraction-container {
-  display: flex;
-  align-items: center; /* Center fraction vertically */
-  justify-content: center;
-}
-
-/* General styling for the fraction */
-.fraction {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 2rem;
-}
-
-.fraction .top {
-  border-bottom: 2px solid black;
-  padding: 0 5px;
-  position: relative; /
-}
-
-.fraction .bottom {
-  padding: 0 5px;
-  position: relative; 
-  cursor: pointer;
-}
-
 /* Tooltip styling */
-.fraction .top:hover::after,
-.fraction .bottom:hover::after {
+#example-top:hover::after,
+#example-bottom:hover::after {
   content: attr(data-tooltip);
   position: absolute;
   left: 120%; 
@@ -91,7 +55,12 @@
 }
 
 #multiple-choice button {
-  margin: 15px; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 15px;
+  margin-top: 50px;
+  margin-bottom: 50px;
   padding: 5px 15px; 
   border-radius: 5px;
 }
@@ -168,13 +137,13 @@
 
 
 /* psuedo stuff */
-.fraction .top:hover::after,
-.fraction .bottom:hover::after {
+#example-top:hover::after,
+#example-bottom:hover::after {
   content: attr(data-tooltip);
 }
 
-.fraction .top:hover::before,
-.fraction .bottom:hover::before {
+#example-top:hover::before,
+#example-bottom:hover::before {
   content: "";
   position: absolute;
   left: 115%;
