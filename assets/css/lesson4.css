@@ -21,9 +21,9 @@
 /* This is how we can make a stacked fraction (add to style.css when appropriate)*/
 .flex-container {
   display: flex;
-  align-items: center; /* Vertically align items */
-  justify-content: space-between; /* Spread items horizontally */
-  gap: 20px; /* Add spacing between text and fraction */
+  align-items: center; 
+  justify-content: space-between;
+  gap: 20px;
 }
 
 /* Styling the fraction container */
@@ -45,13 +45,12 @@
 .fraction .top {
   border-bottom: 2px solid black;
   padding: 0 5px;
-  position: relative; /* Needed for positioning the tooltip */
-  cursor: pointer; /* Add pointer to indicate interactivity */
+  position: relative; /
 }
 
 .fraction .bottom {
   padding: 0 5px;
-  position: relative; /* Needed for positioning the tooltip */
+  position: relative; 
   cursor: pointer;
 }
 
@@ -130,21 +129,30 @@
 
 #fraction-input-section {
   display: flex;
-  flex-direction: column; /* Stack items vertically */
-  align-items: center; /* Center all items horizontally */
-  gap: 10px; /* Add space between items */
-  margin-top: 20px; /* Add space above the section */
+  flex-direction: column;
+  align-items: center; 
+  gap: 10px; 
+  margin-top: 20px; 
 }
 
 #fraction-input-section input {
-  width: 130px; /* Set a consistent width for inputs */
-  text-align: center; /* Center the text in the input */
+  width: 130px; 
+  text-align: center;
 }
 
 .fraction-line {
   width: 140px; 
   height: 2px;
   background-color: black;
+}
+
+#target-numerator {
+  margin-bottom: 0px;
+}
+
+#target-denominator {
+  padding-top: 0px;
+  margin-top: 0px;
 }
 
 #sa-submit-button,
