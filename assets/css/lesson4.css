@@ -1,19 +1,178 @@
+/* class styling */
 .diagram-container {
-    display: grid;
-    diagram-template-columns: repeat(auto-fill, 50px); /* Adjust number of columns */
-    gap: 10px;
-    margin: 20px 0;
-  }
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+}
   
-  .square {
-    width: 25px;
-    height: 25px;
-    background-color: white;
-    border: 1px solid black;
-    cursor: pointer;
-    transition: background-color 0.2s ease-in-out;
-  }
-  
-  .square.shaded {
-    background-color: #007bff;
-  }
+.square {
+  width: 25px;
+  height: 25px;
+  background-color: white;
+  border: 1px solid black;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.square.shaded {
+  background-color: #007bff;
+}
+
+/* This is how we can make a stacked fraction (add to style.css when appropriate)*/
+.flex-container {
+  display: flex;
+  align-items: center; /* Vertically align items */
+  justify-content: space-between; /* Spread items horizontally */
+  gap: 20px; /* Add spacing between text and fraction */
+}
+
+/* Styling the fraction container */
+.fraction-container {
+  display: flex;
+  align-items: center; /* Center fraction vertically */
+  justify-content: center;
+}
+
+/* General styling for the fraction */
+.fraction {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 2rem;
+}
+
+.fraction .top {
+  border-bottom: 2px solid black;
+  padding: 0 5px;
+  position: relative; /* Needed for positioning the tooltip */
+  cursor: pointer; /* Add pointer to indicate interactivity */
+}
+
+.fraction .bottom {
+  padding: 0 5px;
+  position: relative; /* Needed for positioning the tooltip */
+  cursor: pointer;
+}
+
+/* Tooltip styling */
+.fraction .top:hover::after,
+.fraction .bottom:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: 120%; 
+  top: 50%;
+  transform: translateY(-50%); 
+  background-color: #f44336; 
+  color: #fff; 
+  padding: 5px 10px; 
+  border-radius: 5px; 
+  white-space: nowrap; 
+  z-index: 10; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-size: 0.8rem;
+}
+
+.image-container {
+  display: flex;
+  justify-content: right;
+  align-items: right;
+  width: 33%;
+}
+
+.image-container img {
+  max-width: 100%; 
+  height: auto;
+}
+
+/* id styling */
+#diagramMC span,
+#diagramSA span {
+  font-size: xx-large;
+}
+
+#multiple-choice button {
+  margin: 15px; 
+  padding: 5px 15px; 
+  border-radius: 5px;
+}
+
+#mc-example-gif {
+  display: inline-block;
+  align-content: center;
+}
+
+#numerator-sa,
+#denominator-sa {
+  padding: 5px;
+  margin: 10px;
+  align-items: center;
+  display: inline-block;
+}
+
+#sa-submit-button {
+  display: block;
+  position: relative;
+  align: center;
+}
+
+#mc-example-gif,
+#sa-example-gif {
+  width: 300px; 
+  height: auto; 
+  transition: transform 0.3s ease-in-out; 
+}
+
+#mc-example-gif:hover,
+#sa-example-gif:hover {
+  transform: scale(4) translateY(-10px);
+}
+
+#fraction-input-section {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center all items horizontally */
+  gap: 10px; /* Add space between items */
+  margin-top: 20px; /* Add space above the section */
+}
+
+#fraction-input-section input {
+  width: 130px; /* Set a consistent width for inputs */
+  text-align: center; /* Center the text in the input */
+}
+
+.fraction-line {
+  width: 140px; 
+  height: 2px;
+  background-color: black;
+}
+
+#sa-submit-button,
+#mc-submit-button,
+#cts-submit-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  background-color: #f44336;
+  color: white;
+  cursor: pointer;
+}
+
+
+/* psuedo stuff */
+.fraction .top:hover::after,
+.fraction .bottom:hover::after {
+  content: attr(data-tooltip);
+}
+
+.fraction .top:hover::before,
+.fraction .bottom:hover::before {
+  content: "";
+  position: absolute;
+  left: 115%;
+  top: 50%;
+  transform: translateY(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: transparent #333 transparent transparent;
+}

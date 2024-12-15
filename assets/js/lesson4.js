@@ -161,7 +161,7 @@ function checkMultipleChoice(button) {
     if (streakMC >= 4) {
       updateProgress('completeMC');
       playConfetti();
-      feedback.textContent = `🥳 Nice work, ${userName}! You've passed off these questions.`
+      feedback.textContent = `🥳 Nice work, ${userName}! You've passed off these questions. You're next set.`
       streakMC = 0;
     }
 
