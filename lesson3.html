@@ -8,6 +8,109 @@
     <title>Lesson 3</title>
 </head>
 <body>
+    <header>
+        <h1>Lesson 3: Numerators and Denominators</h1>
+    </header>
+
+        <br>
+          <h2>PARTS OF A FRACTION</h2>
+          <p>What are the parts of a fraction? Good question!</p>
+          <p>Fractions have two parts a top number and a bottom number.
+          <p>The top number is called a numerator and the bottom part is called a
+            denominator.</p>
+          </p>
+          <img src="./images/fractionparts.jpg" alt="parts of a fraction numerator and denominator"/>
+
+        <div>
+          <h2>TEST YOUR UNDERSTANDING</h2>
+          <P>Type the numerator of each fraction that appears.</P>
+ 
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        input {
+            padding: 5px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        #score {
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<div>
+
+    <h1>Guess the Numerator Game</h1>
+    <p>Guess the numerator of the fraction. You have 10 attempts!</p>
+    <div id="game">
+        <p>What is the numerator of the fraction: <span id="fraction"></span> ?</p>
+        <input type="number" id="userGuess" placeholder="Enter your guess" />
+        <button onclick="checkAnswer()">Submit</button>
+        <p id="message"></p>
+    </div>
+    <div id="result" style="display: none;">
+        <h2>Game Over!</h2>
+        <p>Your final score is: <span id="score"></span> / 10</p>
+    </div>
+
+    <script>
+        let attempts = 0;
+        let correctAnswers = 0;
+        let currentNumerator;
+
+        function generateFraction() {
+            // Generate a random numerator between 1 and 10, and denominator between 1 and 10
+            const numerator = Math.floor(Math.random() * 10) + 1;
+            const denominator = Math.floor(Math.random() * 10) + 1;
+            currentNumerator = numerator;
+            return `${numerator} / ${denominator}`;
+        }
+
+        function checkAnswer() {
+            const userGuess = parseInt(document.getElementById('userGuess').value);
+            if (userGuess === currentNumerator) {
+                correctAnswers++;
+                document.getElementById('message').innerText = 'Correct!';
+            } else {
+                document.getElementById('message').innerText = 'Wrong! The correct answer was ' + currentNumerator;
+            }
+
+            attempts++;
+            if (attempts < 10) {
+                // Generate a new fraction for the next round
+                document.getElementById('fraction').innerText = generateFraction();
+                document.getElementById('userGuess').value = ''; // Clear the input
+            } else {
+                endGame();
+            }
+        }
+
+        function endGame() {
+            document.getElementById('game').style.display = 'none';
+            document.getElementById('result').style.display = 'block';
+            document.getElementById('score').innerText = correctAnswers;
+        }
+
+        // Initialize the first fraction
+        document.getElementById('fraction').innerText = generateFraction();
+    </script>
+
+    <p>REFRESH THIS PAGE TO START A NEW GAME</p>
+
+    </div>
+
+    
+
+
+
     <script src="./assets/js/script.js"></script>
     <script src="./assets/js/lesson3.js"></script>
 </body>
