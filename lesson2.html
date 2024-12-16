@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Divide&Conquer</title>
+<title>Lesson 2 Page</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="./assets/css/lesson2.css">
 <style>
 body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
-.fa-anchor,.fa-coffee {font-size:200px}
 </style>
 </head>
 <body>
@@ -37,31 +37,32 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 </div>
 
 <!-- Header -->
-<header class="w3-container w3-red w3-center" style="padding:128px 16px">
+<header class="w3-container w3-red w3-center" style="padding:100px 16px">
   <h1 class="w3-margin w3-jumbo">IDENTIFYING EQUAL PARTS</h1>
   <p class="w3-xlarge">How to determine equal parts of an object vs unequal parts.</p>
-  <button class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Next Lesson</button>
 </header>
 
 <!-- First Grid -->
-<div class="w3-row-padding w3-padding-64 w3-container">
+<section class="w3-row-padding w3-padding-64 w3-container">
   <div class="w3-content">
     <div class="w3-twothird w3-card-4 w3-padding-large">
       <h1>EQUAL VS UNEQUAL</h1>
-      <h5 class="w3-padding-16">In example 1, you will see shapes divided into equal parts and unequal parts.</h5>
+      <h5 class="w3-padding-16">In the example below, you will see shapes divided into equal parts and unequal parts.</h5>
 
     </div>
     <div class="w3-container">
-      <h2>Example 1</h2>
-      <img src="./images/example shapes.png" class="w3-round w3-panel w3-border w3-border-red" alt="Equal" style="width:50%;">
+      <img src="./images/example shapes.png" class="w3-round w3-panel w3-border w3-border-red" alt="Equal" style="width:60%;">
+      <img src="./images/pizza_nobg.png" class="w3-round w3-panel" alt="pizza" style="width:25%;">
     </div>
       
     </div>
   </div>
-</div>
+</section>
 
+<hr class="styled-line">
 <!-- Second Grid -->
-<div class="w3-row-padding w3-light-grey w3-padding-64 w3-container">
+ 
+<section class="w3-row-padding w3-light-grey w3-padding-64 w3-container">
   <div class="w3-content">
     <div class="w3-third w3-center">
       <i class="w3-padding-64 w3-text-red w3-margin-right"></i>
@@ -69,21 +70,29 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 
     <div class="w3-twothird w3-card-4 w3-padding-large">
       <h1>GIVE IT A TRY!</h1>
-      <h5 class="w3-padding-16">Select the 4 shapes that have been split into equal parts.</h5>
-
-      
+      <h5 class="w3-padding-16">Identify 4 shapes that have been split into equal parts and answer the question below.</h5>
     </div>
     <div class="w3-container">
-      <h2>Quiz</h2>
-      <img src="./images/quiz shapes.png" class="w3-round w3-panel w3-border w3-border-red" alt="quiz" style="width:60%">
-    </div>
-  
+      <img src="./images/kids pizza.jpeg" class="w3-round" alt="kids" style="position-anchor: initial; margin-top: 70px; width:30%">
+      <img src="./images/quiz shapes.png" class="w3-round w3-panel w3-border w3-border-red" alt="quiz" style="float: right; width: 65%;">
     </div>
   </div>
-</div>
+  <div class="w3-container" style="float: left; width: 100%; text-align: center; padding: 20px;">
+    <h2>Quiz: Multiple Choice</h2>
+    <p>Which shapes are split into equal parts?</p>
+      <button onclick="checkMultipleChoice(this)" data-answer="wrong">B,E,D,G</button>
+      <button onclick="checkMultipleChoice(this)" data-answer="wrong">H,G,A,D</button>
+      <button onclick="checkMultipleChoice(this)" data-answer="correct">E,B,H,D</button>
+    <p id="feedback1"></p>
+  </div>
+</section>
+
+
+<section id="multiple-choice"></section>
 
 <div class="w3-container w3-black w3-center w3-opacity w3-padding-64">
-    <h1 class="w3-margin w3-xlarge">GREAT JOB! Try the Next Lesson</h1>
+  <h1 class="w3-margin w3-xlarge">KEEP IT UP! Try the Next Lesson</h1>
+  <button class="w3-button w3-white w3-padding-large w3-large w3-margin-top">Lesson 3</button>
 </div>
 
 <!-- Footer -->
@@ -97,19 +106,13 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
     <i class="fa fa-linkedin w3-hover-opacity"></i>
  </div>
  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+
 </footer>
 
-<script>
-// Used to toggle the menu on small screens when clicking on the menu button
-function myFunction() {
-  var x = document.getElementById("navDemo");
-  if (x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
-  } else { 
-    x.className = x.className.replace(" w3-show", "");
-  }
-}
-</script>
+
+<script src="lesson2.js"></script>  
+<script src="./assets/js/script.js"></script>
+<script src="./assets/js/lesson2.js"></script>
 
 </body>
 </html>
