@@ -52,67 +52,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initializeUser();
 });
 
-
-//old modal
-
-// document.addEventListener("DOMContentLoaded", () => {
-//   const saveUsernameButton = document.getElementById("save-username");
-//   if (saveUsernameButton) {
-//       saveUsernameButton.addEventListener("click", () => {
-//           console.log("Button clicked!");
-//       });
-//   } else {
-//       console.error("Save Username button not found in DOM.");
-//   }
-// });
-
-// window.onload = function () {
-//   initializeUser(); // Check username and show modal if necessary
-//   loadProgress(); // Load progress from local storage
-//   generateRandomFraction('diagramMC', 'MC');// Initialize the first questions when the page loads (Lesson 4)
-//   generateRandomFraction('diagramSA','SA');
-//   generateClickToShadeDiagram('diagram', 'CTS');
-// };
-
-// function initializeUser() {
-//   const storedUsername = localStorage.getItem ("username");
-//   const usernameModal = document.getElementById("username-modal");
-//   const usernameInput = document.getElementById("username-input");
-//   const saveUsernameButton = document.getElementById("save-username");
-//   const usernameError = document.getElementById("username-error");
-
-//   if (!storedUsername) {
-//     // Show modal if username is not stored
-//     usernameModal.style.display = "flex";
-
-//     // Handle username submission
-//     saveUsernameButton.addEventListener("click", () => {
-//       console.log("Button Clicked");
-//       const enteredUsername = usernameInput.value.trim();
-
-//       if (enteredUsername) {
-//         localStorage.setItem("username", enteredUsername);
-//         usernameModal.style.display = "none";
-//         usernameError.style.display = "none";
-//         displayGreeting(enteredUsername);
-//       } else {
-//         usernameError.textContent = "Username is required!";
-//         usernameError.style.display = "block";
-//       }
-//     });
-//   } else {
-//       // Display greeting if username exists
-//       displayGreeting(storedUsername);
-//   }
-// }
-
-// function displayGreeting(username) {
-//   const userGreeting = document.getElementById("user-greeting");
-//   if (userGreeting) {
-//     userGreeting.textContent = `Welcome back, ${username}!`;
-//   }
-// }
-
 function loadProgress() {
   const progress = JSON.parse(localStorage.getItem("progress")) || {};
 
