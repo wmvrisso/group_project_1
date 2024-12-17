@@ -1,0 +1,9 @@
+.styled-line {
+    border: none;               /* Removes the default border */
+    height: 5px;                /* Sets the line thickness */
+    background-color: rgb(150, 148, 148);    /* Sets the line color */
+    margin: 10px 0;             /* Adds space above and below the line */
+    width: 100%;                 /* Adjusts the line's width */
+    margin-left: auto;          /* Centers the line */
+    margin-right: auto;
+  }
