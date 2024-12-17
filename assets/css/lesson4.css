@@ -54,10 +54,17 @@
   font-size: xx-large;
 }
 
-#multiple-choice button {
+#multiple-choice {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+#multiple-choice button {
+  display: inline-block;
+  gap: 20px;
+  flex-wrap: wrap;
   margin: 15px;
   margin-top: 50px;
   margin-bottom: 50px;
@@ -135,8 +142,44 @@
   cursor: pointer;
 }
 
+/* Animation for button clicks */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+button.correct {
+  background-color: #28a745;
+  color: white;
+  animation: bounce 0.5s ease;
+}
+
+button.wrong {
+  background-color: #dc3545;
+  color: white;
+  animation: shake 0.5s ease;
+}
+
+/* Shake animation */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25%, 75% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+}
+
 
 /* psuedo stuff */
+button:active {
+  scale: 95%;
+}
+
 #example-top:hover::after,
 #example-bottom:hover::after {
   content: attr(data-tooltip);

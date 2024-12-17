@@ -1,35 +1,4 @@
-/*--------------------------------------------------------------------- File Name: style.css ---------------------------------------------------------------------*/
-
-
-/*--------------------------------------------------------------------- import Fonts ---------------------------------------------------------------------*/
-
-/* @import url('https://fonts.googleapis.com/css?family=Rajdhani:300,400,500,600,700');
-@import url('https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Courgette&display=swap'); */
-
-/*****---------------------------------------- 1) font-family: 'Rajdhani', sans-serif;
- 2) font-family: 'Poppins', sans-serif;
- ----------------------------------------*****/
-
-
-/*--------------------------------------------------------------------- import Files ---------------------------------------------------------------------*/
-
-/* @import url(animate.min.css);
-@import url(normalize.css);
-@import url(icomoon.css);
-@import url(font-awesome.min.css);
-@import url(meanmenu.css);
-@import url(owl.carousel.min.css);
-@import url(swiper.min.css);
-@import url(slick.css);
-@import url(jquery.fancybox.min.css);
-@import url(jquery-ui.css);
-@import url(nice-select.css); */
-
-/*--------------------------------------------------------------------- skeleton ---------------------------------------------------------------------*/
-
-/* This is how we can make a stacked fraction (add to style.css when appropriate)*/
+/* /* This is how we can make a stacked fraction */
 .flex-container {
     display: flex;
     align-items: center; 
@@ -148,19 +117,49 @@ button#save-username:hover {
   }
   
   /* Outer progress bar */
-  #progress-bar {
+#progress-bar {
     position: relative;
     width: 100%;
     height: 100%;
-  }
-  
-  /* Fill section of the progress bar */
-  #progress-fill {
+}
+
+/* Fill section of the progress bar */
+#progress-fill {
     position: absolute;
     bottom: 0;
     width: 0%;
     height: 100%; /* Initial height is 0% */
     background-color: #007bff;
-    transition: height 0.3s ease-in-out;
-  }
+    transition: width 0.3s ease-in-out;
+}
   
+@media screen and (max-width: 925px) {
+    #progress-container {
+        position: fixed;
+        top: 3%;
+        right: 3%;
+        transform: translateX(50%);
+        width: 30px;
+        height: 300px;
+        background-color: #e0e0e0;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      
+      /* Outer progress bar */
+      #progress-bar {
+        position: relative;
+        width: 100%;
+        height: 100%;
+      }
+      
+      #progress-fill {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 0%; /* Initial height is 0% */
+        background-color: #007bff;
+        transition: height 0.3s ease-in-out;
+      }
+}
