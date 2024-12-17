@@ -14,8 +14,8 @@ function checkFraction() {
     const correctNumerator = 4;
     const correctDenominator = 12;
 
-    const userNumerator = parseInt(document.getElementById(guess-numerator).value);
-    const userDenominator = parseInt(document.getElementById(guess-denominator).value);
+    const userNumerator = parseInt(document.getElementById("guess-numerator").value);
+    const userDenominator = parseInt(document.getElementById("guess-denominator").value);
 
     if (isNaN(userNumerator) || isNaN(userDenominator)) {
         alert("Enter a numerator and a denominator");
@@ -31,7 +31,7 @@ function checkFraction() {
         `;
     } else {
         document.getElementById("feedback").innerHTML = `
-        <p style="color: red;>Let's try again, you got this!</p>
+        <p style="color: red;">Let's try again, you got this!</p>
         `;
     }
 }
