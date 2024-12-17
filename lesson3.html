@@ -25,34 +25,15 @@
           <h2>TEST YOUR UNDERSTANDING</h2>
           <P>Type the numerator of each fraction that appears.</P>
  
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 20px;
-        }
-        input {
-            padding: 5px;
-            font-size: 16px;
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            margin-top: 10px;
-        }
-        #score {
-            font-size: 24px;
-            font-weight: bold;
-        }
-    </style>
+
 </head>
 <div>
 
-    <h1>Guess the Numerator Game</h1>
-    <p>Guess the numerator of the fraction. You have 10 attempts!</p>
+    <h1>Identify the Numerator Game</h1>
+    <p>Identify the numerator of the fraction. You have 10 attempts!</p>
     <div id="game">
         <p>What is the numerator of the fraction: <span id="fraction"></span> ?</p>
-        <input type="number" id="userGuess" placeholder="Enter your guess" />
+        <input type="number" id="userGuess" placeholder="Enter your answer" />
         <button onclick="checkAnswer()">Submit</button>
         <p id="message"></p>
     </div>
@@ -61,55 +42,10 @@
         <p>Your final score is: <span id="score"></span> / 10</p>
     </div>
 
-    <script>
-        let attempts = 0;
-        let correctAnswers = 0;
-        let currentNumerator;
+    <button class="restartButton">Restart Game</button>
 
-        function generateFraction() {
-            // Generate a random numerator between 1 and 10, and denominator between 1 and 10
-            const numerator = Math.floor(Math.random() * 10) + 1;
-            const denominator = Math.floor(Math.random() * 10) + 1;
-            currentNumerator = numerator;
-            return `${numerator} / ${denominator}`;
-        }
-
-        function checkAnswer() {
-            const userGuess = parseInt(document.getElementById('userGuess').value);
-            if (userGuess === currentNumerator) {
-                correctAnswers++;
-                document.getElementById('message').innerText = 'Correct!';
-            } else {
-                document.getElementById('message').innerText = 'Wrong! The correct answer was ' + currentNumerator;
-            }
-
-            attempts++;
-            if (attempts < 10) {
-                // Generate a new fraction for the next round
-                document.getElementById('fraction').innerText = generateFraction();
-                document.getElementById('userGuess').value = ''; // Clear the input
-            } else {
-                endGame();
-            }
-        }
-
-        function endGame() {
-            document.getElementById('game').style.display = 'none';
-            document.getElementById('result').style.display = 'block';
-            document.getElementById('score').innerText = correctAnswers;
-        }
-
-        // Initialize the first fraction
-        document.getElementById('fraction').innerText = generateFraction();
-    </script>
-
-    <p>REFRESH THIS PAGE TO START A NEW GAME</p>
-
-    </div>
 
     
-
-
 
     <script src="./assets/js/script.js"></script>
     <script src="./assets/js/lesson3.js"></script>
