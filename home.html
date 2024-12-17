@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Divide&Conquer</title>
+<title>Divide & Conquer</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="./assets/css/style.css" />
+<link rel="stylesheet" href="./assets/css/lesson4.css" />
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
@@ -20,19 +22,27 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 <div class="w3-top">
   <div class="w3-bar w3-red w3-card w3-left-align w3-large">
     <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-    <a href="#" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
-    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Lesson 1</a>
-    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Lesson 2</a>
-    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Lesson 3</a>
-    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Lesson 4</a>
+    <a href="./home.html" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
+    <a href="./lesson1.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Lesson 1</a>
+    <a href="./lesson2.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Lesson 2</a>
+    <a href="./lesson3.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Lesson 3</a>
+    <a href="./lesson4.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Lesson 4</a>
+    <div id="progress-container">
+      <div id="progress-bar">
+        <div id="progress-fill"></div>
+      </div>
+    </div>   
   </div>
+
+  
 
   <!-- Navbar on small screens -->
   <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
-    <a href="#" class="w3-bar-item w3-button w3-padding-large">Lesson 1</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding-large">Lesson 2</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding-large">Lesson 3</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding-large">Lesson 4</a>
+    <a href="./home.html" class="w3-bar-item w3-button w3-padding-large">Home</a>
+    <a href="./lesson1.html" class="w3-bar-item w3-button w3-padding-large">Lesson 1</a>
+    <a href="./lesson2.html" class="w3-bar-item w3-button w3-padding-large">Lesson 2</a>
+    <a href="./lesson3.html" class="w3-bar-item w3-button w3-padding-large">Lesson 3</a>
+    <a href="./lesson4.html" class="w3-bar-item w3-button w3-padding-large">Lesson 3</a>
   </div>
 </div>
 
@@ -40,23 +50,23 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 <header class="w3-container w3-red w3-center" style="padding:128px 16px">
   <h1 class="w3-margin w3-jumbo">DIVIDE & CONQUER!</h1>
   <p class="w3-xlarge">A Simple Way for Everyone to Learn Facts About Fractions</p>
-  <button class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Get Started</button>
+  <a href="lesson1.html">
+    <button id = "get-started" class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Get Started</button>
+  </a>  
 </header>
 
 <!-- First Grid -->
 <div class="w3-row-padding w3-padding-64 w3-container">
   <div class="w3-content">
     <div class="w3-twothird">
-      <h1>Lorem Ipsum</h1>
-      <h5 class="w3-padding-32">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h5>
+      <h1>Fractions 101: A Big Piece of Everyday Life</h1>
+      <h5 class="w3-padding-32">Let's jump right in and find out why fractions are a big part of of the world! Lesson 1 will cover the basics of fractions.</h5>
 
-      <p class="w3-text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint
-        occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-        laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <p class="w3-text-grey">Discover the magic of fractions and how they help us share, measure, and more!</p>
     </div>
 
     <div class="w3-third w3-center">
-      <i class="fa fa-anchor w3-padding-64 w3-text-red"></i>
+      <img src = ".\images\person-measuring-cup.png" width="300px" height="300px">
     </div>
   </div>
 </div>
@@ -65,37 +75,74 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 <div class="w3-row-padding w3-light-grey w3-padding-64 w3-container">
   <div class="w3-content">
     <div class="w3-third w3-center">
-      <i class="fa fa-coffee w3-padding-64 w3-text-red w3-margin-right"></i>
+      <img src = "images/divided chocolate.png" width="300px" height="300px">
     </div>
 
     <div class="w3-twothird">
-      <h1>Lorem Ipsum</h1>
-      <h5 class="w3-padding-32">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h5>
+      <h1>Equal Parts: Everyone Deserves a Fair Share</h1>
+      <h5 class="w3-padding-32">Learn why fractions have to play fair with equal parts to make sense.</h5>
 
-      <p class="w3-text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint
-        occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-        laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <p class="w3-text-grey">We've all seen it, the extra tiny slice of pizza. Fractions like equal parts too!</p>
+    </div>
+  </div>
+</div>
+
+<!-- Third Grid -->
+<div class="w3-row-padding w3-padding-64 w3-container">
+  <div class="w3-content">
+    <div class="w3-twothird">
+      <h1>Fraction Friends: Numerator and Denominator</h1>
+      <h5 class="w3-padding-32">Big words with big jobs. If you can get this, you'll be sailing through fractions!</h5>
+
+      <p class="w3-text-grey">These two, numerators and denominators are the fundamental parts of writing fractions. But don't forget about the fraction bar!</p>
+    </div>
+
+    <div class="w3-third w3-center">
+      <img src = "images/divided-pie.png" width="300px" height="300px">
+    </div>
+  </div>
+</div>
+
+<!-- Fourth Grid -->
+<div class="w3-row-padding w3-light-grey w3-padding-64 w3-container">
+  <div class="w3-content">
+    <div class="w3-third w3-center">
+      <img src = "images/pie-eating.png" width="300px" height="300px">
+    </div>
+
+    <div class="w3-twothird">
+      <h1>Fraction Writing Basics: Now We're Really Cookin'!</h1>
+      <h5 class="w3-padding-32">Here we go, writing and identifying fractions like a pro.</h5>
+
+      <p class="w3-text-grey">Time to start tasting the sweetness of understanding fractions. Practice spotting, naming, and shading fractions.</p>
     </div>
   </div>
 </div>
 
 <div class="w3-container w3-black w3-center w3-opacity w3-padding-64">
-    <h1 class="w3-margin w3-xlarge">Quote of the day: live life</h1>
+    <h1 class="w3-margin w3-xlarge">Pick your Lesson, and let's dig in!</h1>
+</div>
+
+<div id="username-modal" class="modal">
+  <div class="modal-content">
+    <h2>Hi there! What should we call you?</h2>
+    <input type="text" id="username-input" placeholder="Enter your username" />
+    <button id="save-username">Submit</button>
+    <p id="username-error" class="error-message"></p>
+  </div>
 </div>
 
 <!-- Footer -->
 <footer class="w3-container w3-padding-64 w3-center w3-opacity">  
-  <div class="w3-xlarge w3-padding-32">
-    <i class="fa fa-facebook-official w3-hover-opacity"></i>
-    <i class="fa fa-instagram w3-hover-opacity"></i>
-    <i class="fa fa-snapchat w3-hover-opacity"></i>
-    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-    <i class="fa fa-twitter w3-hover-opacity"></i>
-    <i class="fa fa-linkedin w3-hover-opacity"></i>
  </div>
- <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+  <p> Group 4 Project 1</p>
+    <button onclick="resetProgress()">Reset Progress</button>
+  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
 </footer>
 
+<script src="./assets/js/script.js"></script>
+<script src="./assets/js/lesson4.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
 <script>
 // Used to toggle the menu on small screens when clicking on the menu button
 function myFunction() {
@@ -106,6 +153,7 @@ function myFunction() {
     x.className = x.className.replace(" w3-show", "");
   }
 }
+
 </script>
 
 </body>
