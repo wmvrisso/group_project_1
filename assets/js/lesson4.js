@@ -113,10 +113,11 @@ function generateRandomFraction(htmlID, type) {
   if (type === 'MC') {
     assignRandomAnswers();
 
-    //Makes answers visible after a new question
+    //Re-enables buttons
     const answerButtons = document.querySelectorAll('#multiple-choice button');
     answerButtons.forEach((btn) => {
-        btn.style.display = 'inline-block';
+        btn.disabled = false;
+        btn.classList.remove('correct', 'wrong');
     })
   }
 }
@@ -183,9 +184,11 @@ function checkMultipleChoice(button) {
     const username = localStorage.getItem('username');
     feedback.textContent = correctFeedback[Math.floor(Math.random() * correctFeedback.length)];
     feedback.style.color = 'green';
-
+    button.classList.add('correct');
+    setTimeout(() => button.classList.remove('correct'), 1000);
     streakMC++
     console.log(streakMC);
+
     if (streakMC >= 4) {
       updateProgress('completeMC');
       playConfetti();
@@ -193,16 +196,15 @@ function checkMultipleChoice(button) {
       streakMC = 0;
     }
 
-    answerButtons.forEach((btn)=> {
-        btn.style.display = 'none';
-    });
-
   } else {
     feedback.textContent = incorrectFeedback[Math.floor(Math.random() * incorrectFeedback.length)];
     feedback.style.color = 'blue';
-
+    button.classList.add('wrong');
+    setTimeout(() => button.classList.remove('wrong'), 1000);
     streakMC = 0
   }
+
+  answerButtons.forEach(btn => btn.disabled = true);
 }
 
 // Single answer section
