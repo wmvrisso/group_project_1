@@ -9,104 +9,126 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="./assets/css/lesson1.css" />
+<link rel="stylesheet" href="./assets/css/lesson1.js" />
 <style>
 body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
 .fa-anchor,.fa-coffee {font-size:200px}
-
-.images-container img {
-    width: 225px;
-    height: 225px;
-    }
-.images-container img.selected {
-    border-color: black;
-    }
 </style>
-
+</head>
 <body>
-    <script src="./assets/js/script.js"></script>
-    <script src="./assets/js/lesson1.js"></script>
-</body>
+  
+  <div class="w3-top">
+    <div class="w3-bar w3-red w3-card w3-left-align w3-large">
+      <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+      <a href="#" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
+      <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Lesson 1</a>
+      <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Lesson 2</a>
+      <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Lesson 3</a>
+      <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Lesson 4</a>
+    </div>
+    <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
+      <a href="#" class="w3-bar-item w3-button w3-padding-large">Lesson 1</a>
+      <a href="#" class="w3-bar-item w3-button w3-padding-large">Lesson 2</a>
+      <a href="#" class="w3-bar-item w3-button w3-padding-large">Lesson 3</a>
+      <a href="#" class="w3-bar-item w3-button w3-padding-large">Lesson 4</a>
+    </div>
+  </div>
+    
 
 <header class="w3-container w3-red w3-center" style="padding:128px 16px">
     <h1 class="w3-margin w3-jumbo">Introduction to Fractions</h1>
-    <button class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Get Started</button>
 </header>
 
-<div class="w3-row-padding w3-padding-64 w3-container">
+<section class="w3-row-padding w3-padding-64 w3-container">
     <div class="w3-content">
       <div class="w3-twothird">
         <h1>What are Fractions?</h1>
         <h5 class="w3-padding-32">A fraction is a way to represent parts of a whole number. Two numbers are required to be considered a fraction and are written as one number over another, with the bottom number representing the total number of parts and the top number representing the number of parts included.</h5>
-        <img src="file:///Users/elizabethmurillo/Library/Mobile%20Documents/com~apple~CloudDocs/Downloads/Fractions-1.jpg" width="500px" height="250px">
+        <img 
+        src="file:///Users/elizabethmurillo/Library/Mobile%20Documents/com~apple~CloudDocs/Downloads/Fractions-1.jpg" 
+        width="500px" 
+        height="250px"
+        class="right-aligned-img">
         <p class="w3-text-grey"></p>
       </div>
-  
-      <div class="w3-third w3-center">
-        <i class="fa fa-anchor w3-padding-64 w3-text-red"></i>
-      </div>
     </div>
-</div>
+  </section>
 
-<div class="w3-row-padding w3-light-grey w3-padding-64 w3-container">
+<section class="w3-row-padding w3-light-grey w3-padding-64 w3-container">
     <div class="w3-content">
-      <div class="w3-third w3-center">
-        <i class="fa fa-coffee w3-padding-64 w3-text-red w3-margin-right"></i>
-      </div>
-  
       <div class="w3-twothird">
         <h1>How To Identify Fractions:</h1>
         <h5 class="w3-padding-32">Let's identify the different ways we use fractions in real life!</h5>
-  
-        <p class="w3-text-grey">After soccer practice your teammates invite you to share a pizza with them! Including yourself, there are 12 teammates. Let's order a pizza with 12 slices! But, 4 teammates don't like pepperoni so, we need to order one where only parts of it have pepperoni.</p>
-        <p class="w3-text-grey">How does this become a fraction? First, select the pizza with the correct amount of slices you will be sharing with your team:</p>
-     </div>
-    </div>
-</div>
-    
-<div class="images-container"> 
-    <img src="file:///Users/elizabethmurillo/Library/Mobile%20Documents/com~apple~CloudDocs/Downloads/Pizza-8.jpg" alt="8-slices" data-correct="False" onClick="myFunction()">
-    <img src="file:///Users/elizabethmurillo/Library/Mobile%20Documents/com~apple~CloudDocs/Downloads/Pizza-12.jpg" alt="12-slices" data-correct="True" onClick="myFunction()">
-    <img src="file:///Users/elizabethmurillo/Library/Mobile%20Documents/com~apple~CloudDocs/Downloads/Pizza-4.jpg" alt="4-slices" data-correct="False" onClick="myFunction()">
-</div>
-
-<div>
-    <button id="submit-btn">Submit</button>
-    <div class="feedback" id="feedback"></div>
-</div>
-
-<div class="w3-row-padding w3-light-grey w3-padding-64 w3-container">
-    <div class="w3-content">
-      <div class="w3-third w3-center">
-        <i class="fa fa-coffee w3-padding-64 w3-text-red w3-margin-right"></i>
+        <h6 class="w3-text-black">After soccer practice your teammates invite you to share a pizza with them! Including yourself, there are 12 teammates. Let's order a pizza with 12 slices! But, 4 teammates don't like pepperoni so, we need to order one where only parts of it have pepperoni.</h6>
+        <h6 class="w3-text-black">First, select the pizza with the correct amount of slices you will be sharing with your team:</h6>
+        <div class="images-container"> 
+          <img src="file:///Users/elizabethmurillo/Library/Mobile%20Documents/com~apple~CloudDocs/Downloads/Pizza-8.jpg" alt="8-slices" data-correct="False" onClick="checkAnswer(this)">
+          <img src="file:///Users/elizabethmurillo/Library/Mobile%20Documents/com~apple~CloudDocs/Downloads/Pizza-12.jpg" alt="12-slices" data-correct="True" onClick="checkAnswer(this)">
+          <img src="file:///Users/elizabethmurillo/Library/Mobile%20Documents/com~apple~CloudDocs/Downloads/Pizza-4.jpg" alt="4-slices" data-correct="False" onClick="checkAnswer(this)">
+       </div>
+       <h5 class="w3-padding-32">Now that we have our pizza, we need to select the image that has the right amount of slices for our teammates who like pepperoni and then we can convert it into a fraction!</h5>
+       <h5 class="w3-padding-32">Select the correct image:</h5>
+      <div class="images-container">
+        <img src="file:///Users/elizabethmurillo/Library/Mobile%20Documents/com~apple~CloudDocs/Downloads/Pizza-true.jpg" alt="correct-pizza" data-correct="True" onClick="checkAnswer(this)">
+        <img src="file:///Users/elizabethmurillo/Library/Mobile%20Documents/com~apple~CloudDocs/Downloads/Pizza-f2.jpg" alt="false1-pizza" data-correct="False" onClick="checkAnswer(this)">
+        <img src="file:///Users/elizabethmurillo/Library/Mobile%20Documents/com~apple~CloudDocs/Downloads/Pizza-f1.jpg" alt="false2-pizza" data-correct="False" onClick="checkAnswer(this)">
       </div>
-  
-      <div class="w3-twothird">
-        <h5 class="w3-padding-32">Now that we have our pizza, we need to select the correct pizza that has the right amount of slices for our teammates who like pepperoni and convert it into a fraction!</h5>
-  
-        <p class="w3-text-grey">After soccer practice your teammates invite you to share a pizza with them! Including yourself, there are 12 teammates. Let's order a pizza with 12 slices! But, 4 teammates don't like pepperoni so, we need to order one where only parts of it have pepperoni.</p>
-        <p class="w3-text-grey">Which of these pizzas have the correct amount of pepperoni? After you click your choice, add the fraction that shows what parts of the whole have pepperoni on it.</p>
-     </div>
+      <h5 class="w3-padding-32">How does this become a fraction? Enter in the solution that would tell us how many teammates had pepperoni out of the ordered amount of slices!</h5>
+      <div class ="fraction-input">
+        <h5>Enter your fraction in the boxes:</h5>
+        <label for="guess-numerator">Numerator:</label>
+        <input type="number" id="guess-numerator">
+
+        <label for="guess-denominator">Denominator:</label>
+        <input type="number" id="guess-denominator">
+
+        <button onClick="checkFraction()">Check Answer</button>
+
+      </div>
+      <div id="feedback" style="margin-top: 20px;"></div>
+      </div>
     </div>
+  </section>
+
+<style>
+  .images-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .images-container img {
+    width: 200px;
+    height: auto;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: transform 0.2s;
+  }
+  .images-container img:hover {
+    transform: scale(1.1);
+  }
+ </style>
+
+<div class="w3-container w3-black w3-center w3-opacity w3-padding-64">
+  <h1 class="w3-margin w3-xlarge">Why did the fraction cross the road?<br>To meet its other half!</h1>
 </div>
 
-<div class="images-container">
-    <img src="file:///Users/elizabethmurillo/Library/Mobile%20Documents/com~apple~CloudDocs/Downloads/Pizza-true.jpg" alt="correct-pizza" data-correct="True" onClick="myFunction()">
-    <img src="file:///Users/elizabethmurillo/Library/Mobile%20Documents/com~apple~CloudDocs/Downloads/Pizza-f2.jpg" alt="false1-pizza" data-correct="False" onClick="myFunction()">
-    <img src="file:///Users/elizabethmurillo/Library/Mobile%20Documents/com~apple~CloudDocs/Downloads/Pizza-f1.jpg" alt="false2-pizza" data-correct="False" onClick="myFunction()">
-</div>
+<footer class="w3-container w3-padding-64 w3-center w3-opacity">  
+  <div class="w3-xlarge w3-padding-32">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+ </div>
+ <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+</footer>
 
+  <script src="./assets/js/script.js"></script>
+  <script src="./assets/js/lesson1.js"></script>
 
-<section>
-    <h2>Different types of fractions:</h2>
-    <h3>Zero</h3>
-    <p></p>
-    <h3>Whole</h3>
-    <p></p>
-    <h3>Proper</h3>
-    <p></p>
-    <h3>Improper</h3>
-    <p></p>
-</section>
-
+</body>
 </html>
