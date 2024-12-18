@@ -1,31 +1,38 @@
-// Users will select the pizza with the correct number of slices
-const images = document.querySelectorAll('.images-container img');
-const submitButton = document.getElementById('submit-btn');
-const feedback = document.getElementById('feedback');
-let selectedImage = null;
+function checkAnswer(image) {
+    const isCorrect = image.getAttribute("data-correct") === "True";
 
-images.forEach(image => {
-    image.addEventListener('click', () => {
-        images.forEach(img => img.classList.remove('selected'));
-        image.classList.add('selected');
-        selectedImage = image;
-    });
-});
+    if (isCorrect) {
+        alert("Great job!");
+        image.style.border = "5px solid green";
+    } else {
+        alert("Oops! Try again, you got this!");
+        image.style.border = "5px solid red";
+    }
+}
 
-// Add event listener to submit button
-submitButton.addEventListener('click', () => {
-    if (!selectedImage) {
-        feedback.textContent = 'Please select an image!';
-        feedback.style.color = 'Black'
+function checkFraction() {
+    const correctNumerator = 4;
+    const correctDenominator = 12;
+
+    const userNumerator = parseInt(document.getElementById("guess-numerator").value);
+    const userDenominator = parseInt(document.getElementById("guess-denominator").value);
+
+    if (isNaN(userNumerator) || isNaN(userDenominator)) {
+        alert("Enter a numerator and a denominator");
         return;
     }
-    // Add a function for when user selects correct image
-    const isCorrect = selectedImage.dataset.correct == 'true';
-    if (isCorrect) {
-        feedback.textContent = 'You got it! Well done!';
-        feedback.style.color = 'Green';
-    } else {
-        feedback.textContent = 'Oops, Try again!';
-        feedback.style.color = 'red';
+    if (userDenominator === 0) {
+        alert("Denominator cannot be 0, try a different number!");
+        return;
     }
-});
+    if (userNumerator === correctNumerator && userDenominator === correctDenominator) {
+        document.getElementById("feedback").innerHTML = `
+        <p style="color: green;">You did it! Great work! The correct fraction is 4/12!</p>
+        `;
+    } else {
+        document.getElementById("feedback").innerHTML = `
+        <p style="color: red;">Let's try again, you got this!</p>
+        `;
+    }
+}
+
